@@ -82,3 +82,10 @@ npm install
 npm install tailwindcss @tailwindcss/vite
 npm install react-router-dom
 ```
+
+Componentes del navbar
+
+```bash
+npm install @headlessui/react
+npm install @heroicons/react
+```
