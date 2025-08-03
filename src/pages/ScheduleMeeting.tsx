@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function ScheduleMeeting() {
 
@@ -9,6 +10,7 @@ export default function ScheduleMeeting() {
         <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
             <h1 className="text-5xl font-bold">{t('Schedule a meeting')}</h1>
         </div>
+        <Breadcrumbs />
     </div>
   );
 }

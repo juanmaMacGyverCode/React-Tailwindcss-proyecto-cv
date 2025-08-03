@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Contact() {
 
@@ -9,6 +10,7 @@ export default function Contact() {
         <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
             <h1 className="text-5xl font-bold">{t('Contact')}</h1>
         </div>
+        <Breadcrumbs />
     </div>
   );
 }
