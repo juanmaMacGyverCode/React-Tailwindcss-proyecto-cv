@@ -101,3 +101,9 @@ Añadido en /src/main.tsx para poder traducir cualquier texto usando la notació
 ```typescript
 import './i18n';
 ```
+
+Instalado dependencia para manejar las traducciones en JSON:
+
+```bash
+npm install i18next-http-backend
+```

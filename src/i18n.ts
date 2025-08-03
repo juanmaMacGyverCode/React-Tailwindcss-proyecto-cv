@@ -1,51 +1,20 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector'
+import HttpBackend from 'i18next-http-backend';
 
-i18n.use(initReactI18next).init({
-  lng: 'en', // idioma por defecto
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false,
-  },
-  resources: {
-    en: {
-      translation: {
-        home: 'Home',
-        about: 'About',
-        contact: 'Contact me',
-        Contact: 'Contact me',
-        "Contact me": 'Contact me',
-        schedule: 'Schedule a meeting',
-        Home: 'Home',
-        notifications: 'View notifications',
-        openMenu: 'Open main menu',
-        profile: 'Your Profile',
-        settings: 'Settings',
-        signout: 'Sign out',
-        "about me": 'About me',
-        "Schedule a meeting": 'Schedule a meeting',
-      },
+i18n
+  .use(HttpBackend) // backend para cargar archivos JSON
+  .use(LanguageDetector) // detectar idioma del navegador
+  .use(initReactI18next)
+  .init({
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false,
     },
-    es: {
-      translation: {
-        home: 'Inicio',
-        about: 'Sobre mí',
-        contact: 'Contáctame',
-        Contact: 'Contáctame',
-        "Contact me": 'Contáctame',
-        Home: 'Inicio',
-        schedule: 'Programar una cita',
-        notifications: 'Ver notificaciones',
-        openMenu: 'Abrir menú principal',
-        profile: 'Tu perfil',
-        settings: 'Configuración',
-        signout: 'Cerrar sesión',
-        "about me": 'Sobre mi',
-        "Schedule a meeting": 'Programar una cita',
-      },
+    backend: {
+      loadPath: '/locales/{{lng}}/translation.json',
     },
-  },
-});
+  });
 
 export default i18n;

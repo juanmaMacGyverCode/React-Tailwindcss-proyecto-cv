@@ -6,20 +6,29 @@ import {
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from './LanguageSwitch';
+import { localizedRoutes } from '../routes';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Navbar() {
-  const { t, i18n } = useTranslation(); // ✅ aquí dentro
-  const lang = i18n.language;
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language as 'en' | 'es';
+  const routes = localizedRoutes[lang];
 
-  const navigation = [
+  /*const navigation = [
     { key: 'home', path: '' },
     { key: 'about', path: 'about' },
     { key: 'contact', path: 'contact-me' },
     { key: 'schedule', path: 'schedule-a-meeting' },
+  ];*/
+
+  const navigation = [
+    { key: 'home' },
+    { key: 'about' },
+    { key: 'contact' },
+    { key: 'schedule' },
   ];
 
   return (
@@ -49,7 +58,7 @@ export default function Navbar() {
                 {navigation.map((item) => (
                   <a
                     key={item.key}
-                    href={`/${lang}/${item.path}`}
+                    href={`/${lang}/${routes[item.key as keyof typeof routes]}`}
                     className={classNames(
                       'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
                     )}
@@ -77,7 +86,7 @@ export default function Navbar() {
             <DisclosureButton
               key={item.key}
               as="a"
-              href={`/${lang}/${item.path}`}
+              href={`/${lang}/${routes[item.key as keyof typeof routes]}`}
               className={classNames(
                 'block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
               )}

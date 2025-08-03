@@ -8,27 +8,34 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ScheduleMeeting from './pages/ScheduleMeeting';
 
+/* Rutas localizadas */
+import { localizedRoutes } from './routes';
+
 export default function LocalizedRoutes() {
-  const { lang } = useParams();
+  const { lang } = useParams<{ lang: string }>();
   const navigate = useNavigate();
   const location = useLocation();
   const { i18n } = useTranslation();
 
   useEffect(() => {
-    const supportedLangs = ['en', 'es'];
+    const supportedLangs = Object.keys(localizedRoutes);
     if (lang && supportedLangs.includes(lang)) {
       i18n.changeLanguage(lang);
     } else {
       navigate(`/es${location.pathname}`, { replace: true });
     }
-  }, [lang]);
+  }, [lang, location.pathname, navigate, i18n]);
+
+  if (!lang || !(lang in localizedRoutes)) return null;
+
+  const r = localizedRoutes[lang as keyof typeof localizedRoutes];
 
   return (
     <Routes>
       <Route path="" element={<Home />} />
-      <Route path="about" element={<About />} />
-      <Route path="contact-me" element={<Contact />} />
-      <Route path="schedule-a-meeting" element={<ScheduleMeeting />} />
+      <Route path={r.about} element={<About />} />
+      <Route path={r.contact} element={<Contact />} />
+      <Route path={r.schedule} element={<ScheduleMeeting />} />
     </Routes>
   );
 }
