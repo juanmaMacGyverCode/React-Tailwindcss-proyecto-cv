@@ -89,3 +89,15 @@ Componentes del navbar
 npm install @headlessui/react
 npm install @heroicons/react
 ```
+
+Instalado componente de idiomas
+
+```bash
+npm install i18next react-i18next i18next-browser-languagedetector
+```
+
+Añadido en /src/main.tsx para poder traducir cualquier texto usando la notación {t(lorem ipsum)}
+
+```typescript
+import './i18n';
+```

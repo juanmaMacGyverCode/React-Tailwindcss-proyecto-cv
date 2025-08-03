@@ -1,13 +1,6 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
-/* Páginas */
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import ScheduleMeeting from './pages/ScheduleMeeting';
-
-/* Componentes */
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import LocalizedRoutes from './LocalizedRoutes';
 
 function App() {
   return (
@@ -15,10 +8,10 @@ function App() {
       <Navbar />
       <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact-me" element={<Contact />} />
-          <Route path="schedule-a-meeting" element={<ScheduleMeeting />} />
+          {/* Redirige a idioma por defecto si no hay */}
+          <Route path="/" element={<Navigate to="/es" replace />} />
+          {/* Captura el idioma como parámetro y carga las rutas internas */}
+          <Route path="/:lang/*" element={<LocalizedRoutes />} />
         </Routes>
       </div>
     </BrowserRouter>
