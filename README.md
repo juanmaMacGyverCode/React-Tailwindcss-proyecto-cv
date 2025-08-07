@@ -107,3 +107,9 @@ Instalado dependencia para manejar las traducciones en JSON:
 ```bash
 npm install i18next-http-backend
 ```
+
+Instalado dependencia de fontawesome
+
+```bash
+npm install @fortawesome/fontawesome-free
+```
