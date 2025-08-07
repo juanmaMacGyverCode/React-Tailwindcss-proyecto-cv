@@ -113,3 +113,33 @@ Instalado dependencia de fontawesome
 ```bash
 npm install @fortawesome/fontawesome-free
 ```
+
+Instalado herramienta storybook
+
+```bash
+npx storybook@latest init
+```
+
+Story book 9.1.1
+
+```bash
+http://localhost:6006/?path=/story/example-page--logged-in&onboarding=false
+```
+
+Story book running tests 
+
+```bash
+npx vitest --project=storybook
+```
+
+Running storybook
+
+```bash
+npm run storybook
+```
+
+Configurar storybook con react
+
+```bash
+npm install storybook-addon-react-i18next
+```
