@@ -12,5 +12,24 @@
     "settings": "Configuración",
     "signout": "Cerrar sesión",
     "about me": "Sobre mi",
-    "Schedule a meeting": "Programar una cita"
+    "Schedule a meeting": "Programar una cita",
+    "skills": {
+    "software": {
+      "title": "Ingeniería de Software",
+      "description": "Más de 4 años de experiencia profesional en desarrollo de software empresarial"
+    },
+    "data": {
+      "title": "Ciencia de Datos",
+      "description": "Especializado en modelos de aprendizaje automático y análisis de datos"
+    },
+    "fullstack": {
+      "title": "Desarrollo Full Stack",
+      "description": "Desarrollo completo desde la interfaz hasta el sistema backend"
+    },
+    "analytics": {
+      "title": "Análisis",
+      "description": "Expertise en visualización y análisis basado en datos"
+    }
+  },
+  "About Me": "Sobre mí"
 }

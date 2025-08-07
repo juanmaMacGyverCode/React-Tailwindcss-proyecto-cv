@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Background from '../components/Background';
 import ProfileSection from '../components/ProfileSection';
+import AboutMeSection from '../components/AboutMeSection';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -20,6 +21,7 @@ export default function Home() {
             <h2 className="text-5xl font-bold">{t('Home')}</h2>
         </div>
         <ProfileSection />
+        <AboutMeSection />
     </div>
   );
 }

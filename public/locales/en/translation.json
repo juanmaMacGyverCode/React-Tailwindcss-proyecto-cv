@@ -1,16 +1,35 @@
 {
-        "home": "Home",
-        "about": "About",
-        "contact": "Contact me",
-        "Contact": "Contact me",
-        "Contact me": "Contact me",
-        "schedule": "Schedule a meeting",
-        "Home": "Home",
-        "notifications": "View notifications",
-        "openMenu": "Open main menu",
-        "profile": "Your Profile",
-        "settings": "Settings",
-        "signout": "Sign out",
-        "about me": "About me",
-        "Schedule a meeting": "Schedule a meeting"
-      }
+  "home": "Home",
+  "about": "About",
+  "contact": "Contact me",
+  "Contact": "Contact me",
+  "Contact me": "Contact me",
+  "schedule": "Schedule a meeting",
+  "Home": "Home",
+  "notifications": "View notifications",
+  "openMenu": "Open main menu",
+  "profile": "Your Profile",
+  "settings": "Settings",
+  "signout": "Sign out",
+  "about me": "About me",
+  "Schedule a meeting": "Schedule a meeting",
+  "skills": {
+    "software": {
+      "title": "Software Engineering",
+      "description": "4+ years of professional experience in building enterprise software"
+    },
+    "data": {
+      "title": "Data Science",
+      "description": "Specialized in machine learning models and data analysis"
+    },
+    "fullstack": {
+      "title": "Full Stack Development",
+      "description": "End-to-end development from UI/UX to backend systems"
+    },
+    "analytics": {
+      "title": "Analytics",
+      "description": "Data-driven insights and visualization expertise"
+    }
+  },
+  "About Me": "About Me"
+}
