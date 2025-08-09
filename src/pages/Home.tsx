@@ -4,6 +4,7 @@ import Background from '../components/Background';
 import ProfileSection from '../components/ProfileSection';
 import AboutMeSection from '../components/AboutMeSection';
 import MyProfessionalResume from '../components/MyProfessionalResume';
+import ExperienceSection from '../components/ExperienceSection';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -24,6 +25,7 @@ export default function Home() {
         <ProfileSection />
         <AboutMeSection />
         <MyProfessionalResume />
+        <ExperienceSection />
     </div>
   );
 }

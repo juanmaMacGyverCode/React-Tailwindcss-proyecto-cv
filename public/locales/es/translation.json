@@ -32,5 +32,40 @@
     }
   },
   "About Me": "Sobre mí",
-  "resume": "Currículum"
+  "resume": "Currículum",
+  "experience": {
+    "title": "Experiencia",
+    "items": [
+      {
+        "type": "job",
+        "logoKey": "esko",
+        "title": "Ingeniero de Software",
+        "company": "Esko Graphics Private Ltd.",
+        "dates": "jun 2021 - Presente",
+        "location": "Bangalore, India",
+        "points": [
+          "Migración de módulos de cálculo al cloud con arquitectura de microservicios, logrando más del 50% de adopción y mejorando la accesibilidad.",
+          "Diseño e implementación de tests unitarios sólidos, aumentando la precisión de los algoritmos en un 90%.",
+          "Liderazgo del desarrollo de la funcionalidad Prime, acelerando los plazos de proyecto en un 20%.",
+          "Automatización de pipelines para métricas de Veracode y SonarQube, optimizando más del 80% de los microservicios.",
+          "Creación de visualizaciones en Kibana e integración con Elasticsearch para analizar logs, reduciendo el tiempo de detección de bugs en un 30%.",
+          "Mentoría a desarrolladores junior y participación activa en diseño de sistemas para back y UI."
+        ],
+        "tech": ["Java Spring Boot", "Marionette JS", "Elastic Search", "Docker", "AWS ECR", "AWS ECS", "AWS SES", "AWS SQS", "DynamoDB", "Kibana"]
+      },
+      {
+        "type": "internship",
+        "logoKey": "esko",
+        "title": "Prácticas de Desarrollo de Software",
+        "company": "Esko Graphics Private Ltd.",
+        "dates": "ene 2021 - may 2021",
+        "location": "Bangalore, India",
+        "points": [
+          "Desarrollo de aplicaciones desde cero con C, Java, NodeJS y JavaScript, mejorando la arquitectura del sistema sin frameworks.",
+          "Diseño y despliegue de una app de reparto de comida en EC2, gestionando arquitectura backend y diseño de base de datos."
+        ],
+        "tech": ["C", "Java", "NodeJS", "JavaScript", "AWS EC2"]
+      }
+    ]
+  }
 }

@@ -32,5 +32,40 @@
     }
   },
   "About Me": "About Me",
-  "resume": "Resume"
+  "resume": "Resume",
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "type": "job",
+        "logoKey": "esko",
+        "title": "Software Engineer",
+        "company": "Esko Graphics Private Ltd.",
+        "dates": "Jun 2021 - Present",
+        "location": "Bangalore, India",
+        "points": [
+          "Migrated core calculation modules to the cloud following Microservice based Architecture, achieving over 50% user adoption and enhancing accessibility.",
+          "Engineered and implemented robust unit tests, boosting algorithm accuracy by 90%.",
+          "Spearheaded development of the Prime Feature, accelerating project timelines by 20%.",
+          "Developed automated pipelines for Veracode and SonarQube metrics, streamlining DevSecOps processes and optimizing over 80% of microservices.",
+          "Created Kibana visualizations and integrated Elasticsearch to analyze logs, reducing bug detection time by 30%.",
+          "Mentored junior developers and participated in system design for backend and UI integration."
+        ],
+        "tech": ["Java Spring Boot", "Marionette JS", "Elastic Search", "Docker", "AWS ECR", "AWS ECS", "AWS SES", "AWS SQS", "DynamoDB", "Kibana"]
+      },
+      {
+        "type": "internship",
+        "logoKey": "esko",
+        "title": "Software Development Internship",
+        "company": "Esko Graphics Private Ltd.",
+        "dates": "Jan 2021 - May 2021",
+        "location": "Bangalore, India",
+        "points": [
+          "Engineered applications from scratch using C, Java, NodeJS, and JavaScript, improving system architecture without frameworks.",
+          "Designed and deployed an online food delivery app on EC2, handling backend architecture and database design."
+        ],
+        "tech": ["C", "Java", "NodeJS", "JavaScript", "AWS EC2"]
+      }
+    ]
+  }
 }
