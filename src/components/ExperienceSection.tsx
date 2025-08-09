@@ -3,52 +3,20 @@ import { useTranslation } from 'react-i18next';
 
 import eskoLogo from '../assets/images/companies/esko-company.svg';
 
-interface ExperienceItem {
+type ExperienceItem = {
   type: 'job' | 'internship';
+  logoKey?: 'esko';
   title: string;
   company: string;
   dates: string;
   location: string;
   points: string[];
   tech: string[];
-  logo?: string;
-}
+};
 
-const experiences: ExperienceItem[] = [
-  {
-    type: 'job',
-    title: 'Software Engineer',
-    company: 'Esko Graphics Private Ltd.',
-    dates: 'Jun 2021 – Present',
-    location: 'Bangalore, India',
-    points: [
-      'Migrated core calculation modules to the cloud following Microservice based Architecture, achieving over 50% user adoption and enhancing accessibility.',
-      'Engineered and implemented robust unit tests, boosting algorithm accuracy by 90%.',
-      'Spearheaded development of the Prime Feature, accelerating project timelines by 20%.',
-      'Developed automated pipelines for Veracode and SonarQube metrics, streamlining DevSecOps processes and optimizing over 80% of microservices.',
-      'Created Kibana visualizations and integrated Elasticsearch to analyze logs, reducing bug detection time by 30%.',
-      'Mentored junior developers and participated in system design for backend and UI integration.',
-    ],
-    tech: [
-      'Java Spring Boot', 'Marionette JS', 'Elastic Search', 'Docker',
-      'AWS ECR', 'AWS ECS', 'AWS SES', 'AWS SQS', 'DynamoDB', 'Kibana'
-    ],
-    logo: eskoLogo
-  },
-  {
-    type: 'internship',
-    title: 'Software Development Internship',
-    company: 'Esko Graphics Private Ltd.',
-    dates: 'Jan 2021 – May 2021',
-    location: 'Bangalore, India',
-    points: [
-      'Engineered applications from scratch using C, Java, NodeJS, and JavaScript, improving system architecture without frameworks.',
-      'Designed and deployed an online food delivery app on EC2, handling backend architecture and database design.',
-    ],
-    tech: ['C', 'Java', 'NodeJS', 'JavaScript', 'AWS EC2'],
-    logo: eskoLogo
-  }
-];
+const LOGOS: Record<string, string> = {
+  esko: eskoLogo,
+};
 
 export default function ExperienceSection() {
 
@@ -73,9 +41,9 @@ export default function ExperienceSection() {
                 </div>
               <div className="bg-gray-800 rounded-lg p-6 shadow-md">
                 <div className="flex items-center gap-4 mb-4">
-                    {exp.logo && (
+                    {exp.logoKey && (
                       <div className="bg-white rounded p-1 flex items-center justify-center">
-                        <img src={exp.logo} alt={exp.company} className="w-12 h-12 object-contain" />
+                        <img src={LOGOS[exp.logoKey]} alt={exp.company} className="w-12 h-12 object-contain" />
                       </div>
                     )}
                   <div>
