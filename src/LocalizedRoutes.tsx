@@ -1,6 +1,7 @@
 import { Routes, Route, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { metaConfig } from './metaConfig';
 
 /* Páginas */
 import Home from './pages/Home';
@@ -11,6 +12,11 @@ import ResumePreview from './pages/ResumePreview';
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
+
+const localeMap = {
+  es: 'es_ES',
+  en: 'en_US',
+} as const;
 
 function useCanonicalAndHreflang(lang: keyof typeof localizedRoutes, pathname: string) {
   useEffect(() => {
@@ -52,6 +58,81 @@ function useCanonicalAndHreflang(lang: keyof typeof localizedRoutes, pathname: s
   }, [lang, pathname]);
 }
 
+function useMetaTags(lang: keyof typeof localizedRoutes, pathname: string) {
+  useEffect(() => {
+    const parts = pathname.split('/').filter(Boolean).slice(1); // quitamos lang
+    const key = parts.length
+      ? (Object.entries(localizedRoutes[lang]).find(([, slug]) => slug === parts[0])?.[0] ?? 'home')
+      : 'home';
+
+    const meta = metaConfig[key as keyof typeof metaConfig];
+    if (!meta) return;
+
+    const title = meta.title[lang] || import.meta.env.VITE_SITE_NAME;
+    const description = meta.description[lang] || import.meta.env.VITE_DEFAULT_DESCRIPTION;
+    const imageUrl = `${import.meta.env.VITE_BASE_URL}${meta.image}`;
+    const pageUrl = `${import.meta.env.VITE_BASE_URL}${pathname}`;
+
+    document.title = title;
+
+    // Meta description
+    let descTag = document.querySelector("meta[name='description']");
+    if (!descTag) {
+      descTag = document.createElement("meta");
+      descTag.setAttribute("name", "description");
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute("content", description);
+
+    // OpenGraph básico + localización
+    const ogTags = [
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:image', content: imageUrl },
+      { property: 'og:url', content: pageUrl },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:locale', content: localeMap[lang] },
+    ];
+
+    // og:locale:alternate para los otros idiomas
+    (Object.keys(localizedRoutes) as Array<keyof typeof localizedRoutes>)
+      .filter(l => l !== lang)
+      .forEach(otherLang => {
+        ogTags.push({
+          property: 'og:locale:alternate',
+          content: localeMap[otherLang],
+        });
+      });
+
+    ogTags.forEach(({ property, content }) => {
+      let tag = document.querySelector(`meta[property='${property}']`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    });
+
+    // Twitter Card
+    const twitterTags = [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: imageUrl },
+    ];
+    twitterTags.forEach(({ name, content }) => {
+      let tag = document.querySelector(`meta[name='${name}']`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('name', name);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute('content', content);
+    });
+  }, [lang, pathname]);
+}
+
 
 export default function LocalizedRoutes() {
   const { lang } = useParams<{ lang: string }>();
@@ -70,7 +151,11 @@ export default function LocalizedRoutes() {
 
   if (!lang || !(lang in localizedRoutes)) return null;
 
-  useCanonicalAndHreflang(lang as keyof typeof localizedRoutes, location.pathname);
+  /*useCanonicalAndHreflang(lang as keyof typeof localizedRoutes, location.pathname);*/
+  if (lang && lang in localizedRoutes) {
+    useCanonicalAndHreflang(lang as keyof typeof localizedRoutes, location.pathname);
+    useMetaTags(lang as keyof typeof localizedRoutes, location.pathname);
+  }
 
   const r = localizedRoutes[lang as keyof typeof localizedRoutes];
 
