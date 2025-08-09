@@ -2,6 +2,8 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/react';
 import { useTranslation } from 'react-i18next';
 import enFlag from '../assets/images/languages/en.svg';
 import esFlag from '../assets/images/languages/es.svg';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { localizedRoutes } from '../routes';
 
 const languages = [
   { code: 'en', label: 'English', flag: enFlag },
@@ -10,8 +12,44 @@ const languages = [
 
 export default function LanguageSelect() {
   const { i18n } = useTranslation();
-  const changeLanguage = (code: string) => i18n.changeLanguage(code);
-  const currentLang = languages.find((lang) => lang.code === i18n.language) || languages[0];
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  /*const changeLanguage = (code: string) => i18n.changeLanguage(code);*/
+  /*const currentLang = languages.find((lang) => lang.code === i18n.language) || languages[0];*/
+
+  const currentCode = (i18n.resolvedLanguage || i18n.language || 'en').slice(0, 2);
+  const currentLang = languages.find(l => l.code === currentCode) || languages[0];
+
+  const changeLanguage = (nextCode: string) => {
+    // 1) Cambiar idioma en i18n
+    i18n.changeLanguage(nextCode);
+
+    // 2) Analizar ruta actual: /:lang/segmento1/segmento2...
+    const parts = pathname.split('/').filter(Boolean); // ej: ["es","sobre-mi"]
+    const [, ...rest] = parts; // quitamos el lang actual
+
+    // 3) Mapear el primer segmento (slug) del idioma actual al nuevo idioma
+    const fromRoutes = localizedRoutes[currentCode as keyof typeof localizedRoutes];
+    const toRoutes   = localizedRoutes[nextCode as keyof typeof localizedRoutes];
+
+    // Caso Home (sin segmento)
+    if (!rest.length) {
+      navigate(`/${nextCode}`, { replace: false });
+      return;
+    }
+
+    const [seg0, ...tail] = rest;
+
+    // Encontrar la "clave lógica" del slug actual buscando en fromRoutes (about, contact, resume, etc.)
+    const entry = Object.entries(fromRoutes).find(([, slug]) => slug === seg0);
+    const key = entry?.[0] as keyof typeof fromRoutes | undefined;
+
+    const nextSlug = key ? toRoutes[key] : ''; // si no hay match, lo mandamos a Home del nuevo idioma
+    const tailPath = tail.length ? `/${tail.join('/')}` : '';
+
+    navigate(`/${nextCode}${nextSlug ? `/${nextSlug}` : ''}${tailPath}`, { replace: false });
+  };
 
   return (
     <Menu as="div" className="relative inline-block text-left">

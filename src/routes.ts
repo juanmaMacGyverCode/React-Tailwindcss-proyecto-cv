@@ -11,6 +11,6 @@ export const localizedRoutes = {
     about: 'sobre-mi',
     contact: 'contactame',
     schedule: 'programar-cita',
-    resume: 'mi-curriculum'
+    resume: 'mi-curriculum',
   },
 } as const;
