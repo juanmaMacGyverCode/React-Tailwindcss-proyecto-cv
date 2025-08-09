@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LocalizedRoutes from './LocalizedRoutes';
 import ResumePreview from "./pages/ResumePreview";
+/*import CanonicalLink from './components/CanonicalLink';*/
+
 
 function App() {
   return (
