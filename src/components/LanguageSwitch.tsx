@@ -4,6 +4,7 @@ import enFlag from '../assets/images/languages/en.svg';
 import esFlag from '../assets/images/languages/es.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { localizedRoutes } from '../routes';
+import { projects } from '../data/projects';
 
 const languages = [
   { code: 'en', label: 'English', flag: enFlag },
@@ -22,34 +23,51 @@ export default function LanguageSelect() {
   const currentLang = languages.find(l => l.code === currentCode) || languages[0];
 
   const changeLanguage = (nextCode: string) => {
-    // 1) Cambiar idioma en i18n
-    i18n.changeLanguage(nextCode);
+  // 1) Cambiar idioma en i18n
+  i18n.changeLanguage(nextCode);
 
-    // 2) Analizar ruta actual: /:lang/segmento1/segmento2...
-    const parts = pathname.split('/').filter(Boolean); // ej: ["es","sobre-mi"]
-    const [, ...rest] = parts; // quitamos el lang actual
+  // 2) Analizar ruta actual: /:lang/segmento1/segmento2...
+  const parts = pathname.split('/').filter(Boolean);
+  const [, ...rest] = parts;
 
-    // 3) Mapear el primer segmento (slug) del idioma actual al nuevo idioma
-    const fromRoutes = localizedRoutes[currentCode as keyof typeof localizedRoutes];
-    const toRoutes   = localizedRoutes[nextCode as keyof typeof localizedRoutes];
+  const fromRoutes = localizedRoutes[currentCode as keyof typeof localizedRoutes];
+  const toRoutes   = localizedRoutes[nextCode as keyof typeof localizedRoutes];
 
-    // Caso Home (sin segmento)
-    if (!rest.length) {
-      navigate(`/${nextCode}`, { replace: false });
+  // Caso Home (sin segmento)
+  if (!rest.length) {
+    navigate(`/${nextCode}`, { replace: false });
+    return;
+  }
+
+  const [seg0, ...tail] = rest;
+
+  // --- 🔹 Detectar si estamos en un detalle de proyecto ---
+  if (seg0 === fromRoutes.projects && tail.length >= 1) {
+    const currentSlug = tail[0];
+
+    // Buscar proyecto con este slug en el idioma actual
+    const project = projects.find(
+      p => p.slug[currentCode as 'en' | 'es'] === currentSlug
+    );
+
+    // Si lo encontramos, usar el slug en el nuevo idioma
+    if (project) {
+      const newSlug = project.slug[nextCode as 'en' | 'es'];
+      navigate(`/${nextCode}/${toRoutes.projects}/${newSlug}`, { replace: false });
       return;
     }
+  }
+  // --- 🔹 Fin detección detalle proyecto ---
 
-    const [seg0, ...tail] = rest;
+  // Para páginas normales
+  const entry = Object.entries(fromRoutes).find(([, slug]) => slug === seg0);
+  const key = entry?.[0] as keyof typeof fromRoutes | undefined;
 
-    // Encontrar la "clave lógica" del slug actual buscando en fromRoutes (about, contact, resume, etc.)
-    const entry = Object.entries(fromRoutes).find(([, slug]) => slug === seg0);
-    const key = entry?.[0] as keyof typeof fromRoutes | undefined;
+  const nextSlug = key ? toRoutes[key] : '';
+  const tailPath = tail.length ? `/${tail.join('/')}` : '';
 
-    const nextSlug = key ? toRoutes[key] : ''; // si no hay match, lo mandamos a Home del nuevo idioma
-    const tailPath = tail.length ? `/${tail.join('/')}` : '';
-
-    navigate(`/${nextCode}${nextSlug ? `/${nextSlug}` : ''}${tailPath}`, { replace: false });
-  };
+  navigate(`/${nextCode}${nextSlug ? `/${nextSlug}` : ''}${tailPath}`, { replace: false });
+};
 
   return (
     <Menu as="div" className="relative inline-block text-left">

@@ -67,5 +67,10 @@
         "tech": ["C", "Java", "NodeJS", "JavaScript", "AWS EC2"]
       }
     ]
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "filters": { "all": "Todos", "dev": "Desarrollo de Software", "ds": "Data Science & ML" },
+    "view": "Ver proyecto"
   }
 }

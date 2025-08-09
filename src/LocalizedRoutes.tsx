@@ -2,6 +2,7 @@ import { Routes, Route, useParams, useNavigate, useLocation } from 'react-router
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { metaConfig } from './metaConfig';
+import { projects } from './data/projects';
 
 /* Páginas */
 import Home from './pages/Home';
@@ -9,6 +10,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ScheduleMeeting from './pages/ScheduleMeeting';
 import ResumePreview from './pages/ResumePreview';
+import ProjectDetail from './pages/ProjectDetail';
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
@@ -18,11 +20,14 @@ const localeMap = {
   en: 'en_US',
 } as const;
 
-function useCanonicalAndHreflang(lang: keyof typeof localizedRoutes, pathname: string) {
+function useCanonicalAndHreflang(
+  lang: keyof typeof localizedRoutes,
+  pathname: string
+) {
   useEffect(() => {
-    const baseUrl = import.meta.env.VITE_BASE_URL; // 👈 cambia a tu dominio real
+    const baseUrl = import.meta.env.VITE_BASE_URL;
 
-    // Crear o actualizar canonical
+    // Canonical
     let canonicalTag = document.querySelector("link[rel='canonical']");
     if (!canonicalTag) {
       canonicalTag = document.createElement("link");
@@ -34,21 +39,39 @@ function useCanonicalAndHreflang(lang: keyof typeof localizedRoutes, pathname: s
     // Limpiar hreflang anteriores
     document.querySelectorAll("link[rel='alternate']").forEach(el => el.remove());
 
-    // Detectar clave semántica de la ruta actual
-    const parts = pathname.split("/").filter(Boolean).slice(1); // sin el lang
+    // Partes de la ruta SIN el lang (["proyectos","mi-slug"] por ejemplo)
+    const parts = pathname.split("/").filter(Boolean).slice(1);
+
+    // Clave lógica de la primera parte (home/about/contact/projects/…)
     let key: string | null = null;
     if (parts.length) {
       const match = Object.entries(localizedRoutes[lang]).find(([, slug]) => slug === parts[0]);
       key = match?.[0] || null;
     }
 
-    // Generar hreflang para cada idioma con su slug correspondiente
+    // Hreflang por idioma
     (Object.keys(localizedRoutes) as Array<keyof typeof localizedRoutes>).forEach(otherLang => {
       let otherPath = `/${otherLang}`;
-      if (key) {
+
+      if (key === 'projects') {
+        // Ruta actual a proyectos: /:lang/:projects/:projectSlug?
+        const currentSlug = parts[1]; // puede no existir si estás en el índice de proyectos
+        if (currentSlug) {
+          // Buscar el proyecto por el slug del idioma actual o por si ya coincide con el del otro idioma
+          const proj = projects.find(p =>
+            p.slug[lang] === currentSlug || p.slug[otherLang] === currentSlug
+          );
+          const targetSlug = proj ? proj.slug[otherLang] : currentSlug; // fallback si no se encuentra
+          otherPath += `/${localizedRoutes[otherLang].projects}/${targetSlug}`;
+        } else {
+          // Índice de proyectos (sin slug)
+          otherPath += `/${localizedRoutes[otherLang].projects}`;
+        }
+      } else if (key) {
         const slug = localizedRoutes[otherLang][key as keyof typeof localizedRoutes[typeof otherLang]];
         otherPath += `/${slug}`;
       }
+
       const altTag = document.createElement("link");
       altTag.setAttribute("rel", "alternate");
       altTag.setAttribute("hrefLang", otherLang);
@@ -166,6 +189,7 @@ export default function LocalizedRoutes() {
       <Route path={r.contact} element={<Contact />} />
       <Route path={r.schedule} element={<ScheduleMeeting />} />
       <Route path={r.resume} element={<ResumePreview />} />
+      <Route path={`${r.projects}/:projectSlug`} element={<ProjectDetail />} />
     </Routes>
   );
 }
