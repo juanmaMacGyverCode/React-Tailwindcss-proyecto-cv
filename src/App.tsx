@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LocalizedRoutes from './LocalizedRoutes';
+import ResumePreview from "./pages/ResumePreview";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Navigate to="/es" replace />} />
           {/* Captura el idioma como parámetro y carga las rutas internas */}
           <Route path="/:lang/*" element={<LocalizedRoutes />} />
+          <Route path="/resume" element={<ResumePreview />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -4,11 +4,13 @@ export const localizedRoutes = {
     about: 'about',
     contact: 'contact-me',
     schedule: 'schedule-a-meeting',
+    resume: 'resume',
   },
   es: {
     home: '',
     about: 'sobre-mi',
     contact: 'contactame',
     schedule: 'programar-cita',
+    resume: 'mi-curriculum'
   },
 } as const;

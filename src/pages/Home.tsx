@@ -3,6 +3,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import Background from '../components/Background';
 import ProfileSection from '../components/ProfileSection';
 import AboutMeSection from '../components/AboutMeSection';
+import MyProfessionalResume from '../components/MyProfessionalResume';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -22,6 +23,7 @@ export default function Home() {
         </div>
         <ProfileSection />
         <AboutMeSection />
+        <MyProfessionalResume />
     </div>
   );
 }
