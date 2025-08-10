@@ -72,5 +72,13 @@
     "title": "My Projects",
     "filters": { "all": "All Projects", "dev": "Software Development", "ds": "Data Science & ML" },
     "view": "View project"
+  },
+  "routes": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "schedule": "Schedule a meeting",
+    "resume": "Resume",
+    "projects": "Projects"
   }
 }

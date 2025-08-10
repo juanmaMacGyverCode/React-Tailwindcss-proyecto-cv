@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { localizedRoutes } from '../routes';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function ProjectDetail() {
   const { lang = 'en', projectSlug = '' } = useParams();
@@ -25,6 +26,7 @@ export default function ProjectDetail() {
           {lang === 'es' ? '← Volver a proyectos' : '← Back to projects'}
         </Link>
 
+        <Breadcrumbs />
         <h1 className="text-4xl font-extrabold mt-4">
           {p.title[lang as 'en' | 'es']}
         </h1>

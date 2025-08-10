@@ -72,5 +72,13 @@
     "title": "Mis Proyectos",
     "filters": { "all": "Todos", "dev": "Desarrollo de Software", "ds": "Data Science & ML" },
     "view": "Ver proyecto"
+  },
+  "routes": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "contact": "Contáctame",
+    "schedule": "Programar una cita",
+    "resume": "Mi currículum",
+    "projects": "Proyectos"
   }
 }

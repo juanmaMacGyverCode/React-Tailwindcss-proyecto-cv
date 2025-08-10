@@ -16,6 +16,20 @@ function slugToRouteKey(lang: LangKey, slug: string): string | null {
   return hit ? hit[0] : null; // e.g., "about", "contact", "resume"...
 }
 
+// añade esta función encima del componente:
+const labelForRouteKey = (key: string, t: any) => {
+  switch (key) {
+    case 'home':     return t('home');
+    case 'about':    return t('about');            // NO 'about_me'
+    case 'contact':  return t('contact');
+    case 'schedule': return t('schedule');
+    case 'resume':   return t('resume');
+    /*case 'projects': return t('projects.title');*/   // 👈 evita el objeto
+    case 'projects': return t('routes.projects');
+    default:         return key;
+  }
+};
+
 export default function Breadcrumbs() {
   const { t, i18n } = useTranslation();
   const { pathname } = useLocation();
@@ -43,7 +57,9 @@ export default function Breadcrumbs() {
     acc.push(seg);
 
     const key = slugToRouteKey(lang, seg);
-    const label = key ? t(key) : decodeURIComponent(seg).replace(/-/g, ' ');
+    const label = key
+      ? labelForRouteKey(key, t)
+      : decodeURIComponent(seg).replace(/-/g, ' ');
     const href = `/${acc.join('/')}`;
 
     crumbs.push({
