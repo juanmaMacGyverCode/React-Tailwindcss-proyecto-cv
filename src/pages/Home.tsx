@@ -9,6 +9,7 @@ import MyProjectsSection from '../components/MyProjectsSection';
 import MyProjectsCarousel from '../components/MyProjectsCarousel';
 import PublicationsSection from '../components/PublicationsSection';
 import CertificationsSection from '../components/CertificationsSection';
+import EducationSection from "../components/EducationSection";
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -39,6 +40,7 @@ export default function Home() {
         />
         <PublicationsSection />
         <CertificationsSection />
+        <EducationSection />
     </div>
   );
 }
