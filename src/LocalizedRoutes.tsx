@@ -11,6 +11,7 @@ import Contact from './pages/Contact';
 import ScheduleMeeting from './pages/ScheduleMeeting';
 import ResumePreview from './pages/ResumePreview';
 import ProjectDetail from './pages/ProjectDetail';
+import Projects from './pages/Projects';
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
@@ -190,6 +191,7 @@ export default function LocalizedRoutes() {
       <Route path={r.schedule} element={<ScheduleMeeting />} />
       <Route path={r.resume} element={<ResumePreview />} />
       <Route path={`${r.projects}/:projectSlug`} element={<ProjectDetail />} />
+      <Route path={localizedRoutes[lang].projects} element={<Projects />} />
     </Routes>
   );
 }

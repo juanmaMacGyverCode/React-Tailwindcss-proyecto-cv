@@ -6,6 +6,8 @@
   "Contact me": "Contact me",
   "schedule": "Schedule a meeting",
   "Home": "Home",
+  "Project": "Projects",
+  "project": "Projects",
   "notifications": "View notifications",
   "openMenu": "Open main menu",
   "profile": "Your Profile",
@@ -71,7 +73,7 @@
   "projects": {
     "title": "My Projects",
     "filters": { "all": "All Projects", "dev": "Software Development", "ds": "Data Science & ML" },
-    "view": "View project"
+    "view": "View projects"
   },
   "routes": {
     "home": "Home",

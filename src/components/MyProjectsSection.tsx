@@ -40,6 +40,15 @@ export default function MyProjectsSection() {
           ))}
         </div>
 
+        <div className="mt-4 text-right">
+          <Link
+            to={`/${lang}/${localizedRoutes[lang].projects}`}
+            className="text-sm text-indigo-400 hover:text-indigo-300 underline underline-offset-2"
+          >
+            {t('projects.view')} {/* En tu JSON: "projects": { "view": "Ver todos" } */}
+          </Link>
+        </div>
+        
         {/* slider */}
         <div className="relative mt-10">
           <button

@@ -5,6 +5,8 @@
     "Contact": "Contáctame",
     "Contact me": "Contáctame",
     "Home": "Inicio",
+    "Projects": "Proyectos",
+    "project": "Proyectos",
     "schedule": "Programar una cita",
     "notifications": "Ver notificaciones",
     "openMenu": "Abrir menú principal",
@@ -71,7 +73,7 @@
   "projects": {
     "title": "Mis Proyectos",
     "filters": { "all": "Todos", "dev": "Desarrollo de Software", "ds": "Data Science & ML" },
-    "view": "Ver proyecto"
+    "view": "Ver proyectos"
   },
   "routes": {
     "home": "Inicio",

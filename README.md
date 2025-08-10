@@ -143,3 +143,9 @@ Configurar storybook con react
 ```bash
 npm install storybook-addon-react-i18next
 ```
+
+Instalando Swiper
+
+```bash
+npm i swiper
+```

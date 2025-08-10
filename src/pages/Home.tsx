@@ -6,6 +6,7 @@ import AboutMeSection from '../components/AboutMeSection';
 import MyProfessionalResume from '../components/MyProfessionalResume';
 import ExperienceSection from '../components/ExperienceSection';
 import MyProjectsSection from '../components/MyProjectsSection';
+import MyProjectsCarousel from '../components/MyProjectsCarousel';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -28,6 +29,12 @@ export default function Home() {
         <MyProfessionalResume />
         <ExperienceSection />
         <MyProjectsSection />
+        <MyProjectsCarousel
+          title={t('projects.title')}
+          initialFilter="all"      // o "dev" | "ds"
+          slidesPerView={1.1}
+          autoplayMs={4500}
+        />
     </div>
   );
 }
