@@ -92,5 +92,12 @@
   "Proficient": "Avanzado",
   "Intermediate": "Intermedio",
   "Exploring": "Explorando",
-  "Familiar": "Familiar"
+  "Familiar": "Familiar",
+  "footer": {
+    "home": "Inicio",
+    "external": "Enlace externo",
+    "analyticsNotice": "Este sitio usa Google Analytics para recopilar datos de uso anónimos.",
+    "allRightsReserved": "Todos los derechos reservados."
+  }
+
 }

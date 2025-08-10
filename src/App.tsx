@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import LocalizedRoutes from './LocalizedRoutes';
 import ResumePreview from "./pages/ResumePreview";
 /*import CanonicalLink from './components/CanonicalLink';*/
+import FooterSection from "./components/FooterSection";
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/resume" element={<ResumePreview />} />
         </Routes>
       </div>
+      <FooterSection />
     </BrowserRouter>
   );
 }

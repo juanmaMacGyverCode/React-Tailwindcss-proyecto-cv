@@ -92,5 +92,11 @@
   "Proficient": "Proficient",
   "Intermediate": "Intermediate",
   "Exploring": "Exploring",
-  "Familiar": "Familiar"
+  "Familiar": "Familiar",
+  "footer": {
+    "home": "Home",
+    "external": "External link",
+    "analyticsNotice": "This site uses Google Analytics to collect anonymous usage data.",
+    "allRightsReserved": "All Rights Reserved."
+  }
 }
