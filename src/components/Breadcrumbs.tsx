@@ -29,6 +29,7 @@ const labelForRouteKey = (key: string, t: any) => {
     /*case 'projects': return t('projects.title');*/   // 👈 evita el objeto
     case 'projects': return t('routes.projects');
     case 'publications': return t('routes.publications');
+    case 'certifications': return t('routes.certifications');
     default:         return key;
   }
 };

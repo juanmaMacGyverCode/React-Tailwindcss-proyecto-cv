@@ -82,6 +82,9 @@
     "schedule": "Programar una cita",
     "resume": "Mi currículum",
     "projects": "Proyectos",
-    "publications": "Publicaciones"
-  }
+    "publications": "Publicaciones",
+    "certifications": "Certificaciones"
+  },
+  "View all certifications": "View todas las certificaciones",
+  "Certifications": "Certificaciones"
 }

@@ -8,6 +8,7 @@ import ExperienceSection from '../components/ExperienceSection';
 import MyProjectsSection from '../components/MyProjectsSection';
 import MyProjectsCarousel from '../components/MyProjectsCarousel';
 import PublicationsSection from '../components/PublicationsSection';
+import CertificationsSection from '../components/CertificationsSection';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -37,6 +38,7 @@ export default function Home() {
           autoplayMs={4500}
         />
         <PublicationsSection />
+        <CertificationsSection />
     </div>
   );
 }

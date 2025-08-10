@@ -23,6 +23,7 @@ export default function Navbar() {
     { key: 'schedule' },
     { key: 'projects' },
     { key: 'publications' },
+    { key: 'certifications' },
     { key: 'resume' },
   ] as const;
 

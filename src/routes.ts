@@ -7,6 +7,7 @@ export const localizedRoutes = {
     resume: 'resume',
     projects: 'projects',
     publications: 'publications',
+    certifications: 'certifications'
   },
   es: {
     home: '',
@@ -16,5 +17,6 @@ export const localizedRoutes = {
     resume: 'mi-curriculum',
     projects: 'proyectos',
     publications: 'publicaciones',
+    certifications: 'certificaciones'
   },
 } as const;

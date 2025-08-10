@@ -82,6 +82,9 @@
     "schedule": "Schedule a meeting",
     "resume": "Resume",
     "projects": "Projects",
-    "publications": "Publications"
-  }
+    "publications": "Publications",
+    "certifications": "Certifications"
+  },
+  "View all certifications": "View all certifications",
+  "Certifications": "Certifications"
 }

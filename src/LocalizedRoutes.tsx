@@ -14,6 +14,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Projects from './pages/Projects';
 import PublicationDetail from "./pages/PublicationDetail";
 import PublicationsIndex from "./pages/PublicationsIndex";
+import CertificationsPage from './pages/CertificationsPage';
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
@@ -205,6 +206,9 @@ export default function LocalizedRoutes() {
       {/* Publications (detalle con slug localizado) */}
       <Route path={r.publications} element={<PublicationsIndex />} />
       <Route path={`${r.publications}/:slug`} element={<PublicationDetail />} />
+
+      {/* 👇 NUEVO: Certifications (cuadrícula) */}
+      <Route path={r.certifications} element={<CertificationsPage />} />
     </Routes>
   );
 }

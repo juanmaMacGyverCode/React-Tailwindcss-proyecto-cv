@@ -72,3 +72,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Hace que todas las slides tengan la misma altura (la del más alto) */
+.cert-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+
+/* Cuando la paginación es externa, queremos que no sea absoluta */
+.cert-swiper .swiper-pagination {
+  position: static;
+}
