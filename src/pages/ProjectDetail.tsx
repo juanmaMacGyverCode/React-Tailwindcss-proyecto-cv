@@ -22,11 +22,12 @@ export default function ProjectDetail() {
   return (
     <main className="bg-gray-900 text-white py-14">
       <div className="max-w-4xl mx-auto px-4">
+        <Breadcrumbs />
+        
         <Link to={`/${lang}/${r.projects}`} className="text-indigo-300 hover:text-indigo-200 underline">
           {lang === 'es' ? '← Volver a proyectos' : '← Back to projects'}
         </Link>
 
-        <Breadcrumbs />
         <h1 className="text-4xl font-extrabold mt-4">
           {p.title[lang as 'en' | 'es']}
         </h1>

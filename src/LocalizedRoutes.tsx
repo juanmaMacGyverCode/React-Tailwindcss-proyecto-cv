@@ -16,6 +16,8 @@ import Projects from './pages/Projects';
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
 
+type Lang = keyof typeof localizedRoutes;
+
 const localeMap = {
   es: 'es_ES',
   en: 'en_US',
@@ -173,15 +175,16 @@ export default function LocalizedRoutes() {
     }
   }, [lang, location.pathname, navigate, i18n]);
 
+  // 1) Validar y estrechar 'lang'
   if (!lang || !(lang in localizedRoutes)) return null;
+  const L = lang as Lang;
 
-  /*useCanonicalAndHreflang(lang as keyof typeof localizedRoutes, location.pathname);*/
-  if (lang && lang in localizedRoutes) {
-    useCanonicalAndHreflang(lang as keyof typeof localizedRoutes, location.pathname);
-    useMetaTags(lang as keyof typeof localizedRoutes, location.pathname);
-  }
+  // 2) Objeto de rutas tipado
+  const r = localizedRoutes[L];
 
-  const r = localizedRoutes[lang as keyof typeof localizedRoutes];
+  // 3) Hooks SIEMPRE (ya validamos L arriba)
+  useCanonicalAndHreflang(L, location.pathname);
+  useMetaTags(L, location.pathname);
 
   return (
     <Routes>
@@ -191,7 +194,9 @@ export default function LocalizedRoutes() {
       <Route path={r.schedule} element={<ScheduleMeeting />} />
       <Route path={r.resume} element={<ResumePreview />} />
       <Route path={`${r.projects}/:projectSlug`} element={<ProjectDetail />} />
-      <Route path={localizedRoutes[lang].projects} element={<Projects />} />
+
+      {/* 4) Aquí estaba el error. Usa 'r.projects' en vez de 'localizedRoutes[lang].projects' */}
+      <Route path={r.projects} element={<Projects />} />
     </Routes>
   );
 }

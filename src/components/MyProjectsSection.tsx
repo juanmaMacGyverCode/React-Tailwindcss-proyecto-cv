@@ -5,11 +5,17 @@ import { projects } from '../data/projects';
 import { localizedRoutes } from '../routes';
 
 type Filter = 'all' | 'dev' | 'ds';
+const FILTERS: readonly Filter[] = ['all', 'dev', 'ds'] as const;
+
+type Lang = keyof typeof localizedRoutes; // 'en' | 'es'
 
 export default function MyProjectsSection() {
   const { t } = useTranslation();
-  const { lang = 'en' } = useParams();
-  const r = localizedRoutes[lang as keyof typeof localizedRoutes];
+  /*const { lang = 'en' } = useParams();
+  const r = localizedRoutes[lang as keyof typeof localizedRoutes];*/
+  const { lang } = useParams<{ lang?: Lang }>();
+  const L: Lang = (lang ?? 'es') as Lang;    // estrechamos
+  const r = localizedRoutes[L];              // rutas tipadas
 
   const [filter, setFilter] = useState<Filter>('all');
   const trackRef = useRef<HTMLDivElement>(null);
@@ -28,12 +34,12 @@ export default function MyProjectsSection() {
 
         {/* filtros */}
         <div className="flex flex-wrap justify-center gap-3 mt-8">
-          {(['all','dev','ds'] as Filter[]).map(key => (
+          {FILTERS.map((key) => (
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`px-4 py-2 rounded-full transition
-                ${filter === key ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`}
+              className={`px-4 py-2 rounded-xl ${filter === key ? 'bg-gray-800' : 'bg-gray-900/60'}`}
+              aria-pressed={filter === key}
             >
               {t(`projects.filters.${key}`)}
             </button>
@@ -42,10 +48,10 @@ export default function MyProjectsSection() {
 
         <div className="mt-4 text-right">
           <Link
-            to={`/${lang}/${localizedRoutes[lang].projects}`}
+            to={`/${L}/${r.projects}`}
             className="text-sm text-indigo-400 hover:text-indigo-300 underline underline-offset-2"
           >
-            {t('projects.view')} {/* En tu JSON: "projects": { "view": "Ver todos" } */}
+            {t('projects.view')}
           </Link>
         </div>
         
