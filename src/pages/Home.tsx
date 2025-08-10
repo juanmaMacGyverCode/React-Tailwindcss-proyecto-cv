@@ -10,6 +10,8 @@ import MyProjectsCarousel from '../components/MyProjectsCarousel';
 import PublicationsSection from '../components/PublicationsSection';
 import CertificationsSection from '../components/CertificationsSection';
 import EducationSection from "../components/EducationSection";
+import SkillsSection from "../components/SkillsSection";
+import ContactSection from "../components/ContactSection";
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -41,6 +43,10 @@ export default function Home() {
         <PublicationsSection />
         <CertificationsSection />
         <EducationSection />
+        <SkillsSection />
+
+        {/* Formulario de contacto */}
+        <ContactSection />
     </div>
   );
 }

@@ -11,5 +11,17 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Hidden Netlify form for build-time detection -->
+    <form name="contact" data-netlify="true" netlify-honeypot="company" hidden>
+      <input type="text" name="from_name" />
+      <input type="email" name="from_email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="company" />
+      <div data-netlify-recaptcha="true"></div>
+    </form>
+    
+    <!-- reCAPTCHA v2 (Netlify lo usa automáticamente) -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>
