@@ -5,7 +5,7 @@ import { publications } from "../data/publications";
 import Breadcrumbs from "../components/Breadcrumbs";
 
 export default function PublicationDetail() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { lang = "es", slug = "" } = useParams<{ lang: "es" | "en"; slug: string }>();
   const current = lang === "en" ? "en" : "es";
 

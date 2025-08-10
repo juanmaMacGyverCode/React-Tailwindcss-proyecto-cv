@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { localizedRoutes } from '../routes';
+import { projects } from '../data/projects';
+import { publications } from '../data/publications';
 
 type LangKey = keyof typeof localizedRoutes;
 
@@ -26,6 +28,7 @@ const labelForRouteKey = (key: string, t: any) => {
     case 'resume':   return t('resume');
     /*case 'projects': return t('projects.title');*/   // 👈 evita el objeto
     case 'projects': return t('routes.projects');
+    case 'publications': return t('routes.publications');
     default:         return key;
   }
 };
@@ -53,15 +56,41 @@ export default function Breadcrumbs() {
 
   // Resto de segmentos
   let acc: string[] = lang ? [lang] : [];
+
+  // Detecta la "sección" (about, projects, publications, …)
+  const sectionKey = rest[0] ? slugToRouteKey(lang, rest[0]) : null;
+
+  // Idioma corto actual para mirar títulos/slug
+  const current = (i18n.resolvedLanguage || 'es').startsWith('es') ? 'es' : 'en';
+
   rest.forEach((seg, idx) => {
     acc.push(seg);
 
     const key = slugToRouteKey(lang, seg);
-    const label = key
+
+    // Por defecto, etiqueta traducida si es una ruta conocida, o el slug "bonito"
+    let label = key
       ? labelForRouteKey(key, t)
       : decodeURIComponent(seg).replace(/-/g, ' ');
-    const href = `/${acc.join('/')}`;
 
+    // Si estamos en el 2º segmento (idx === 1) y la sección es projects o publications,
+    // reemplazamos el label por el TÍTULO real del item.
+    if (idx === 1 && sectionKey === 'projects') {
+      const proj =
+        projects.find(p => p.slug[current] === seg) ||
+        projects.find(p => Object.values(p.slug).includes(seg));
+      if (proj) label = proj.title[current];
+    }
+
+    if (idx === 1 && sectionKey === 'publications') {
+      const pub =
+        publications.find(p => p.slug[current] === seg) ||
+        publications.find(p => Object.values(p.slug).includes(seg));
+      if (pub) label = pub.title[current];
+    }
+
+    const href = `/${acc.join('/')}`;
+    
     crumbs.push({
       href,
       label,
