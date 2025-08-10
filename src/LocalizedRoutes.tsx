@@ -12,6 +12,7 @@ import ScheduleMeeting from './pages/ScheduleMeeting';
 import ResumePreview from './pages/ResumePreview';
 import ProjectDetail from './pages/ProjectDetail';
 import Projects from './pages/Projects';
+import PublicationDetail from "./pages/PublicationDetail";
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
@@ -23,10 +24,7 @@ const localeMap = {
   en: 'en_US',
 } as const;
 
-function useCanonicalAndHreflang(
-  lang: keyof typeof localizedRoutes,
-  pathname: string
-) {
+function useCanonicalAndHreflang(lang: Lang, pathname: string) {
   useEffect(() => {
     const baseUrl = import.meta.env.VITE_BASE_URL;
 
@@ -42,36 +40,45 @@ function useCanonicalAndHreflang(
     // Limpiar hreflang anteriores
     document.querySelectorAll("link[rel='alternate']").forEach(el => el.remove());
 
-    // Partes de la ruta SIN el lang (["proyectos","mi-slug"] por ejemplo)
+    // Partes de la ruta sin el lang (["proyectos","mi-slug"] por ejemplo)
     const parts = pathname.split("/").filter(Boolean).slice(1);
 
-    // Clave lógica de la primera parte (home/about/contact/projects/…)
-    let key: string | null = null;
+    // Clave lógica de la primera parte (home/about/contact/projects/publications/…)
+    let key: keyof (typeof localizedRoutes)[Lang] | null = null;
     if (parts.length) {
       const match = Object.entries(localizedRoutes[lang]).find(([, slug]) => slug === parts[0]);
-      key = match?.[0] || null;
+      key = (match?.[0] as any) ?? null;
     }
 
     // Hreflang por idioma
-    (Object.keys(localizedRoutes) as Array<keyof typeof localizedRoutes>).forEach(otherLang => {
+    (Object.keys(localizedRoutes) as Lang[]).forEach(otherLang => {
       let otherPath = `/${otherLang}`;
 
       if (key === 'projects') {
-        // Ruta actual a proyectos: /:lang/:projects/:projectSlug?
-        const currentSlug = parts[1]; // puede no existir si estás en el índice de proyectos
+        // /:lang/:projects/:projectSlug?
+        const currentSlug = parts[1];
         if (currentSlug) {
-          // Buscar el proyecto por el slug del idioma actual o por si ya coincide con el del otro idioma
           const proj = projects.find(p =>
             p.slug[lang] === currentSlug || p.slug[otherLang] === currentSlug
           );
-          const targetSlug = proj ? proj.slug[otherLang] : currentSlug; // fallback si no se encuentra
+          const targetSlug = proj ? proj.slug[otherLang] : currentSlug;
           otherPath += `/${localizedRoutes[otherLang].projects}/${targetSlug}`;
         } else {
-          // Índice de proyectos (sin slug)
           otherPath += `/${localizedRoutes[otherLang].projects}`;
         }
+      } else if (key === 'publications') {
+        // /:lang/:publications/:slug
+        const currentSlug = parts[1];
+        if (currentSlug) {
+          // Si tus publicaciones están en un array similar a 'projects',
+          // aquí podrías mapear por slug en ambos idiomas, como hicimos arriba.
+          // De momento, usamos el mismo slug como fallback.
+          otherPath += `/${localizedRoutes[otherLang].publications}/${currentSlug}`;
+        } else {
+          otherPath += `/${localizedRoutes[otherLang].publications}`;
+        }
       } else if (key) {
-        const slug = localizedRoutes[otherLang][key as keyof typeof localizedRoutes[typeof otherLang]];
+        const slug = localizedRoutes[otherLang][key];
         otherPath += `/${slug}`;
       }
 
@@ -84,12 +91,13 @@ function useCanonicalAndHreflang(
   }, [lang, pathname]);
 }
 
-function useMetaTags(lang: keyof typeof localizedRoutes, pathname: string) {
+function useMetaTags(lang: Lang, pathname: string) {
   useEffect(() => {
     const parts = pathname.split('/').filter(Boolean).slice(1); // quitamos lang
-    const key = parts.length
-      ? (Object.entries(localizedRoutes[lang]).find(([, slug]) => slug === parts[0])?.[0] ?? 'home')
-      : 'home';
+    const key =
+      parts.length
+        ? (Object.entries(localizedRoutes[lang]).find(([, slug]) => slug === parts[0])?.[0] ?? 'home')
+        : 'home';
 
     const meta = metaConfig[key as keyof typeof metaConfig];
     if (!meta) return;
@@ -121,7 +129,7 @@ function useMetaTags(lang: keyof typeof localizedRoutes, pathname: string) {
     ];
 
     // og:locale:alternate para los otros idiomas
-    (Object.keys(localizedRoutes) as Array<keyof typeof localizedRoutes>)
+    (Object.keys(localizedRoutes) as Lang[])
       .filter(l => l !== lang)
       .forEach(otherLang => {
         ogTags.push({
@@ -159,7 +167,6 @@ function useMetaTags(lang: keyof typeof localizedRoutes, pathname: string) {
   }, [lang, pathname]);
 }
 
-
 export default function LocalizedRoutes() {
   const { lang } = useParams<{ lang: string }>();
   const navigate = useNavigate();
@@ -175,14 +182,10 @@ export default function LocalizedRoutes() {
     }
   }, [lang, location.pathname, navigate, i18n]);
 
-  // 1) Validar y estrechar 'lang'
   if (!lang || !(lang in localizedRoutes)) return null;
   const L = lang as Lang;
-
-  // 2) Objeto de rutas tipado
   const r = localizedRoutes[L];
 
-  // 3) Hooks SIEMPRE (ya validamos L arriba)
   useCanonicalAndHreflang(L, location.pathname);
   useMetaTags(L, location.pathname);
 
@@ -193,10 +196,13 @@ export default function LocalizedRoutes() {
       <Route path={r.contact} element={<Contact />} />
       <Route path={r.schedule} element={<ScheduleMeeting />} />
       <Route path={r.resume} element={<ResumePreview />} />
+
+      {/* Projects */}
+      <Route path={r.projects} element={<Projects />} />
       <Route path={`${r.projects}/:projectSlug`} element={<ProjectDetail />} />
 
-      {/* 4) Aquí estaba el error. Usa 'r.projects' en vez de 'localizedRoutes[lang].projects' */}
-      <Route path={r.projects} element={<Projects />} />
+      {/* Publications (detalle con slug localizado) */}
+      <Route path={`${r.publications}/:slug`} element={<PublicationDetail />} />
     </Routes>
   );
 }

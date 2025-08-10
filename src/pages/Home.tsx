@@ -7,6 +7,7 @@ import MyProfessionalResume from '../components/MyProfessionalResume';
 import ExperienceSection from '../components/ExperienceSection';
 import MyProjectsSection from '../components/MyProjectsSection';
 import MyProjectsCarousel from '../components/MyProjectsCarousel';
+import PublicationsSection from '../components/PublicationsSection';
 
 import backgroundHome from '../assets/images/backgrounds/wallpaper-vectorial-image.jpg';
 
@@ -35,6 +36,7 @@ export default function Home() {
           slidesPerView={1.1}
           autoplayMs={4500}
         />
+        <PublicationsSection />
     </div>
   );
 }

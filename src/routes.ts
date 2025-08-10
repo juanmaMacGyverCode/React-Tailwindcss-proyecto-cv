@@ -6,6 +6,7 @@ export const localizedRoutes = {
     schedule: 'schedule-a-meeting',
     resume: 'resume',
     projects: 'projects',
+    publications: 'publications',
   },
   es: {
     home: '',
@@ -14,5 +15,6 @@ export const localizedRoutes = {
     schedule: 'programar-cita',
     resume: 'mi-curriculum',
     projects: 'proyectos',
+    publications: 'publicaciones',
   },
 } as const;
