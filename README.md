@@ -149,3 +149,9 @@ Instalando Swiper
 ```bash
 npm i swiper
 ```
+
+Instalando React Masonry
+
+```bash
+npm i react-masonry-css
+```

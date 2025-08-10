@@ -13,6 +13,7 @@ import ResumePreview from './pages/ResumePreview';
 import ProjectDetail from './pages/ProjectDetail';
 import Projects from './pages/Projects';
 import PublicationDetail from "./pages/PublicationDetail";
+import PublicationsIndex from "./pages/PublicationsIndex";
 
 /* Rutas localizadas */
 import { localizedRoutes } from './routes';
@@ -202,6 +203,7 @@ export default function LocalizedRoutes() {
       <Route path={`${r.projects}/:projectSlug`} element={<ProjectDetail />} />
 
       {/* Publications (detalle con slug localizado) */}
+      <Route path={r.publications} element={<PublicationsIndex />} />
       <Route path={`${r.publications}/:slug`} element={<PublicationDetail />} />
     </Routes>
   );
