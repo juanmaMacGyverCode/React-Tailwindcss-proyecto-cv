@@ -16,7 +16,7 @@ export default function PublicationDetail() {
 
   if (!pub) {
     return (
-      <div className="min-h-screen w-full flex items-center justify-center text-white">
+      <div className="min-h-screen w-full flex items-center justify-center text-[var(--text)]">
         {t("Publication not found", "Publication not found")}
       </div>
     );
@@ -31,20 +31,20 @@ export default function PublicationDetail() {
       <Breadcrumbs />
       <div className="max-w-5xl w-full">
         <div className="flex items-center justify-between gap-4">
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-white">{title}</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-[var(--text)]">{title}</h1>
           <Link
             to={sectionPath}
-            className="text-sm bg-gray-700 hover:bg-gray-600 text-blue-100 px-3 py-1.5 rounded-md"
+            className="text-sm bg-[var(--card)] hover:bg-[var(--card)] text-blue-100 px-3 py-1.5 rounded-md"
           >
             ← {current === "es" ? "Volver" : "Back"}
           </Link>
         </div>
 
-        <p className="italic text-gray-300">{pub.authors}</p>
-        <p className="text-gray-300">{pub.venue}</p>
+        <p className="italic text-[color:var(--muted)]">{pub.authors}</p>
+        <p className="text-[color:var(--muted)]">{pub.venue}</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {pub.tags.map(tag => (
-            <span key={tag} className="text-xs bg-gray-700 text-blue-100 px-2 py-1 rounded-md">{tag}</span>
+            <span key={tag} className="text-xs bg-[var(--card)] text-blue-100 px-2 py-1 rounded-md">{tag}</span>
           ))}
         </div>
 
@@ -57,7 +57,7 @@ export default function PublicationDetail() {
                 href={pub.links.pdf}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-500"
+                className="inline-flex items-center gap-2 rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-[var(--text)] hover:bg-blue-500"
               >
                 📄 {current === "es" ? "Descargar PDF" : "Download PDF"}
               </a>

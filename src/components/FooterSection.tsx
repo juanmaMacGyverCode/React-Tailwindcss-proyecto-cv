@@ -31,7 +31,7 @@ export default function FooterSection() {
   const policiesHref = `/${lang}/${localizedRoutes[lang].publications}`; // cambia a tu página real de política si la tienes
 
   return (
-    <footer className="bg-gray-900 text-white border-t border-white/10">
+    <footer className="bg-[var(--card)] text-[var(--text)] border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col items-center gap-5">
         {/* Nombre / marca */}
         <h2 className="text-3xl font-bold text-blue-400">{siteName}</h2>

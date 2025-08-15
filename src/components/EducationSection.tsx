@@ -19,19 +19,19 @@ export default function EducationSection() {
               <li key={item.id} className="relative">
                 {/* Badge de periodo */}
                 <div className="absolute -left-[1.15rem]">
-                  <span className="inline-block bg-blue-600 text-white text-xs font-semibold rounded-md px-3 py-2 shadow">
+                  <span className="inline-block bg-blue-600 text-[var(--text)] text-xs font-semibold rounded-md px-3 py-2 shadow">
                     {item.period[lang]}
                   </span>
                 </div>
 
-                <article className="bg-gray-800/80 rounded-2xl ring-1 ring-white/5 shadow p-6 md:p-8">
+                <article className="bg-[var(--card)]/80 rounded-2xl ring-1 ring-white/5 shadow p-6 md:p-8">
                   <h3 className="text-2xl font-semibold leading-snug">
                     {item.title[lang]}
                   </h3>
                   <p className="mt-3 text-blue-300 font-medium">
                     {item.institution[lang]}
                   </p>
-                  <p className="mt-3 text-gray-300">{item.description[lang]}</p>
+                  <p className="mt-3 text-[color:var(--muted)]">{item.description[lang]}</p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
                     {item.skills.map((s) => (

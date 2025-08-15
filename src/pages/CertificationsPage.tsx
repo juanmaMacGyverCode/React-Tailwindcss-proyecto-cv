@@ -7,7 +7,7 @@ export default function CertificationsPage() {
   const lang = (i18n.language as "en" | "es") || "en";
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[var(--card)] text-[var(--text)]">
         <Breadcrumbs />
       <div className="max-w-7xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold mb-8">{t("Certifications")}</h1>
@@ -19,7 +19,7 @@ export default function CertificationsPage() {
               href={cert.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gray-800/80 rounded-2xl ring-1 ring-white/5 hover:bg-gray-800 transition shadow p-6 flex flex-col justify-between"
+              className="bg-[var(--card)]/80 rounded-2xl ring-1 ring-white/5 hover:bg-[var(--card)] transition shadow p-6 flex flex-col justify-between"
             >
               <div>
                 <h3 className="text-lg font-semibold mb-2">{cert.title[lang]}</h3>

@@ -21,12 +21,12 @@ export default function Home() {
 
   return (
     <div className="w-full">
-        <Background image={backgroundHome} className="min-h-screen flex flex-col items-center justify-center text-white space-y-4">
+        <Background image={backgroundHome} className="min-h-screen flex flex-col items-center justify-center text-[var(--text)] space-y-4">
           <h1 className="text-5xl font-bold">{t('Juan López')}</h1>
           <h2 className="text-4xl font-bold">{t('Full stack developer & Data Science Enthusiast')}</h2>
         </Background>
         <Breadcrumbs />
-        <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+        <div className="min-h-screen flex items-center justify-center bg-[var(--card)] text-[var(--text)]">
             <h2 className="text-5xl font-bold">{t('Home')}</h2>
         </div>
         <ProfileSection />

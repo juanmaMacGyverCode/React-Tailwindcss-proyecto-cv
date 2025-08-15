@@ -38,7 +38,7 @@ export default function SkillsSection() {
         {/* Grid de categorías */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {skillsCategories.map(cat => (
-            <section key={cat.id} className="rounded-3xl bg-gray-800/70 ring-1 ring-white/5 shadow p-6 md:p-8">
+            <section key={cat.id} className="rounded-3xl bg-[var(--card)]/70 ring-1 ring-white/5 shadow p-6 md:p-8">
               <header className="flex items-center gap-4 mb-6">
                 <div className="grid place-items-center h-12 w-12 rounded-2xl bg-blue-600/20 text-xl">{cat.icon ?? "🧩"}</div>
                 <h3 className="text-2xl font-semibold">{cat.title[lang]}</h3>
@@ -58,7 +58,7 @@ export default function SkillsSection() {
 
 function LegendDot({ color, label }: { color: string; label: string }) {
   return (
-    <span className="inline-flex items-center gap-2 text-gray-300">
+    <span className="inline-flex items-center gap-2 text-[color:var(--muted)]">
       <span className={`h-2.5 w-2.5 rounded-full ${color}`} />
       {label}
     </span>

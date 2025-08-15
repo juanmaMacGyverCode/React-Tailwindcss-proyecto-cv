@@ -78,30 +78,30 @@ export default function ContactSection() {
           name="contact"
           data-netlify="true"
           netlify-honeypot="company"
-          className="space-y-4 bg-gray-800/70 ring-1 ring-white/5 rounded-2xl p-6"
+          className="space-y-4 bg-[var(--card)]/70 ring-1 ring-white/5 rounded-2xl p-6"
         >
           <input type="text" name="company" className="hidden" tabIndex={-1} autoComplete="off" />
           <input type="hidden" name="form-name" value="contact" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-gray-300 mb-1">
+              <label className="block text-sm text-[color:var(--muted)] mb-1">
                 {lang === "es" ? "Nombre" : "Name"}
               </label>
               <input
                 name="from_name"
                 required
-                className="w-full rounded-lg bg-gray-900/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg bg-[var(--card)]/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder={lang === "es" ? "Tu nombre" : "Your name"}
               />
             </div>
             <div>
-              <label className="block text-sm text-gray-300 mb-1">Email</label>
+              <label className="block text-sm text-[color:var(--muted)] mb-1">Email</label>
               <input
                 type="email"
                 name="from_email"
                 required
-                className="w-full rounded-lg bg-gray-900/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full rounded-lg bg-[var(--card)]/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="you@email.com"
               />
             </div>
@@ -109,26 +109,26 @@ export default function ContactSection() {
 
           {/* Subject */}
           <div>
-            <label className="block text-sm text-gray-300 mb-1">
+            <label className="block text-sm text-[color:var(--muted)] mb-1">
               {lang === "es" ? "Asunto" : "Subject"}
             </label>
             <input
               name="subject"
               required
-              className="w-full rounded-lg bg-gray-900/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg bg-[var(--card)]/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={lang === "es" ? "Motivo del mensaje" : "Subject of your message"}
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-300 mb-1">
+            <label className="block text-sm text-[color:var(--muted)] mb-1">
               {lang === "es" ? "Mensaje" : "Message"}
             </label>
             <textarea
               name="message"
               required
               rows={6}
-              className="w-full rounded-lg bg-gray-900/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full rounded-lg bg-[var(--card)]/60 border border-white/10 px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"
               placeholder={lang === "es" ? "Cuéntame en qué puedo ayudarte..." : "Tell me how I can help..."}
             />
           </div>

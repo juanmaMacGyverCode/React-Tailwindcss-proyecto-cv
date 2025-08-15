@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
+      <div className="min-h-screen bg-[var(--surface)]">
         <Routes>
           {/* Redirige a idioma por defecto si no hay */}
           <Route path="/" element={<Navigate to="/es" replace />} />

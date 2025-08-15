@@ -12,7 +12,7 @@ export default function ResumeSection() {
     const r = localizedRoutes[lang as keyof typeof localizedRoutes];
 
     return (
-        <section className="bg-neutral-900 text-white py-20">
+        <section className="bg-neutral-900 text-[var(--text)] py-20">
             <div className="mx-auto max-w-5xl px-4">
 
                 <div className="text-center">
@@ -36,7 +36,7 @@ export default function ResumeSection() {
                             <Link
                               to={r.resume} // ruta de previsualización
                               className="inline-flex items-center gap-2 rounded-xl bg-neutral-900/60
-                                         px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/10
+                                         px-6 py-3 text-sm font-semibold text-[var(--text)] ring-1 ring-white/10
                                          transition hover:bg-neutral-900/80 focus-visible:outline-none
                                          focus-visible:ring-2 focus-visible:ring-blue-500"
                             >
@@ -48,7 +48,7 @@ export default function ResumeSection() {
                               href={pdfFile} // tu archivo
                               download
                               className="inline-flex items-center gap-2 rounded-xl bg-blue-600
-                                         px-6 py-3 text-sm font-semibold text-white transition
+                                         px-6 py-3 text-sm font-semibold text-[var(--text)] transition
                                          hover:bg-blue-500 focus-visible:outline-none
                                          focus-visible:ring-2 focus-visible:ring-blue-400"
                             >

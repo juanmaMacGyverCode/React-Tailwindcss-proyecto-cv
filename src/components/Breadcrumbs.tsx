@@ -105,7 +105,7 @@ export default function Breadcrumbs() {
         {crumbs.map((c, i) => (
           <li key={i} className="flex items-center gap-2">
             {c.isLast ? (
-              <span className="text-gray-300">{c.label}</span>
+              <span className="text-[color:var(--muted)]">{c.label}</span>
             ) : (
               <Link to={c.href} className="text-indigo-400 hover:text-indigo-300 underline underline-offset-2">
                 {c.label}

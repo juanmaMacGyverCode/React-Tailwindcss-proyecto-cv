@@ -12,7 +12,7 @@ export default function Projects() {
   const routeProjects = localizedRoutes[lang].projects;
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[var(--card)] text-[var(--text)]">
         <Breadcrumbs />
       <header className="mx-auto max-w-6xl px-4 pt-10 pb-6 text-center">
         <h1 className="text-4xl md:text-5xl font-extrabold">{t('projects.title')}</h1>
@@ -27,7 +27,7 @@ export default function Projects() {
             return (
               <article
                 key={p.slug.en} // key estable
-                className="bg-gray-800 rounded-xl overflow-hidden shadow ring-1 ring-white/5 flex flex-col"
+                className="bg-[var(--card)] rounded-xl overflow-hidden shadow ring-1 ring-white/5 flex flex-col"
               >
                 <Link to={href} className="block">
                   <img
@@ -43,14 +43,14 @@ export default function Projects() {
                       {p.title[lang as Lang]}
                     </Link>
                   </h3>
-                  <p className="text-gray-300 text-sm line-clamp-3">
+                  <p className="text-[color:var(--muted)] text-sm line-clamp-3">
                     {p.summary[lang as Lang]}
                   </p>
                   <div className="mt-auto flex flex-wrap gap-2 pt-2">
                     {p.tags.slice(0, 6).map(tag => (
                       <span
                         key={`${p.slug.en}-${tag}`}
-                        className="text-xs bg-gray-700 px-2 py-1 rounded-md"
+                        className="text-xs bg-[var(--card)] px-2 py-1 rounded-md"
                       >
                         {tag}
                       </span>

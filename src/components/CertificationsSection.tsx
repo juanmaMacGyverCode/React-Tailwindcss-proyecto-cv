@@ -53,7 +53,7 @@ export default function CertificationsSection() {
                 href={cert.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col bg-gray-800 p-6 rounded-xl hover:bg-gray-700 transition w-full h-full min-h-[240px]"
+                className="flex flex-col bg-[var(--card)] p-6 rounded-xl hover:bg-[var(--card)] transition w-full h-full min-h-[240px]"
               >
                 <div className="mb-4">
                   <h3 className="text-lg font-bold mb-2">{cert.title[lang]}</h3>

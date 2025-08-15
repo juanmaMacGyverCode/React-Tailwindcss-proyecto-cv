@@ -11,7 +11,7 @@ export default function ProjectDetail() {
 
   if (!p) {
     return (
-      <main className="bg-gray-900 text-white min-h-[60vh] grid place-items-center">
+      <main className="bg-[var(--card)] text-[var(--text)] min-h-[60vh] grid place-items-center">
         <p>{lang === 'es' ? 'Proyecto no encontrado' : 'Project not found'}</p>
       </main>
     );
@@ -20,7 +20,7 @@ export default function ProjectDetail() {
   const r = localizedRoutes[lang as keyof typeof localizedRoutes];
 
   return (
-    <main className="bg-gray-900 text-white py-14">
+    <main className="bg-[var(--card)] text-[var(--text)] py-14">
       <div className="max-w-4xl mx-auto px-4">
         <Breadcrumbs />
         
@@ -44,7 +44,7 @@ export default function ProjectDetail() {
 
         <div className="mt-6 flex flex-wrap gap-2">
           {p.tags.map(tag => (
-            <span key={tag} className="bg-gray-700 px-3 py-1 rounded-md text-sm">
+            <span key={tag} className="bg-[var(--card)] px-3 py-1 rounded-md text-sm">
               {tag}
             </span>
           ))}

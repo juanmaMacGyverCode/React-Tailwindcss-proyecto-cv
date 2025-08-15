@@ -27,7 +27,7 @@ export default function MyProjectsSection() {
   const scrollBy = (dx: number) => trackRef.current?.scrollBy({ left: dx, behavior: 'smooth' });
 
   return (
-    <section className="bg-gray-900 text-white py-14">
+    <section className="bg-[var(--card)] text-[var(--text)] py-14">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl font-extrabold text-center">{t('projects.title')}</h2>
         <div className="h-1 w-20 bg-indigo-400 mx-auto mt-4 rounded-full" />
@@ -38,7 +38,7 @@ export default function MyProjectsSection() {
             <button
               key={key}
               onClick={() => setFilter(key)}
-              className={`px-4 py-2 rounded-xl ${filter === key ? 'bg-gray-800' : 'bg-gray-900/60'}`}
+              className={`px-4 py-2 rounded-xl ${filter === key ? 'bg-[var(--card)]' : 'bg-[var(--card)]/60'}`}
               aria-pressed={filter === key}
             >
               {t(`projects.filters.${key}`)}
@@ -62,7 +62,7 @@ export default function MyProjectsSection() {
             aria-label="prev"
             onClick={() => scrollBy(-420)}
             className="absolute -left-12 top-1/2 -translate-y-1/2 z-20
-                       bg-black/60 hover:bg-black/80 text-white
+                       bg-black/60 hover:bg-black/80 text-[var(--text)]
                        w-12 h-12 rounded-full flex items-center justify-center
                        text-xl transition-all duration-300 shadow-lg"
           >
@@ -79,15 +79,15 @@ export default function MyProjectsSection() {
             {filtered.map(p => (
               <article 
                 key={p.slug[lang as 'en' | 'es']} 
-                className="snap-center bg-gray-800 rounded-xl overflow-hidden shadow ring-1 ring-white/5 w-[340px] shrink-0"
+                className="snap-center bg-[var(--card)] rounded-xl overflow-hidden shadow ring-1 ring-white/5 w-[340px] shrink-0"
               >
                 <img src={p.cover} alt={p.title[lang as 'en' | 'es'] } className="h-48 w-full object-cover" />
                 <div className="p-5 space-y-3">
                   <h3 className="text-xl font-semibold leading-tight">{p.title[lang as 'en' | 'es']}</h3>
-                  <p className="text-gray-300 text-sm line-clamp-3">{p.summary[lang as 'en' | 'es']}</p>
+                  <p className="text-[color:var(--muted)] text-sm line-clamp-3">{p.summary[lang as 'en' | 'es']}</p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     {p.tags.slice(0,4).map(tag => (
-                      <span key={tag} className="text-xs bg-gray-700 px-2 py-1 rounded-md">{tag}</span>
+                      <span key={tag} className="text-xs bg-[var(--card)] px-2 py-1 rounded-md">{tag}</span>
                     ))}
                   </div>
                   <div className="pt-3">
@@ -108,7 +108,7 @@ export default function MyProjectsSection() {
             aria-label="next"
             onClick={() => scrollBy(420)}
             className="absolute -right-12 top-1/2 -translate-y-1/2 z-20
-                       bg-black/60 hover:bg-black/80 text-white
+                       bg-black/60 hover:bg-black/80 text-[var(--text)]
                        w-12 h-12 rounded-full flex items-center justify-center
                        text-xl transition-all duration-300 shadow-lg"
           >

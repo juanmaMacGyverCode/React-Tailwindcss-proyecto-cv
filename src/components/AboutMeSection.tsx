@@ -30,7 +30,7 @@ export default function AboutMeSection() {
     ];
 
     return (
-        <section className="bg-gray-900 text-white px-6 py-16">
+        <section className="bg-[var(--card)] text-[var(--text)] px-6 py-16">
             <div className="max-w-6xl mx-auto">
                 <h2 className="text-4xl font-bold text-center mb-12">
                     {t("About Me")}
@@ -46,13 +46,13 @@ export default function AboutMeSection() {
                         <h3 className="text-2xl font-bold text-blue-500 underline underline-offset-4">
                             {t("My Journey")}
                         </h3>
-                        <p className="mt-4 text-gray-300 leading-relaxed">
+                        <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
                           {t("I am a passionate Software Development Engineer with over 4 years of experience and a growing expertise in Data Science & Machine Learning. My journey in tech began with curiosity about how software could solve complex problems, leading me to pursue a career where I've developed enterprise applications that deliver real business value.")}
                         </p>
-                        <p className="mt-4 text-gray-300 leading-relaxed">
+                        <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
                           {t("Currently, I'm expanding my horizons by pursuing an MS in Computer Science with a specialization in Data Science & Machine Learning. I'm combining my engineering background with cutting-edge data science techniques to build intelligent and data-driven solutions.")}
                         </p>
-                        <p className="mt-4 text-gray-300 leading-relaxed">
+                        <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
                           {t("Beyond work, I love problem solving, participating in coding challenges and contributing to AI projects.")}
                         </p>
 

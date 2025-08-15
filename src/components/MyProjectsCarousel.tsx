@@ -57,7 +57,7 @@ export default function MyProjectsCarousel({
               key={f}
               onClick={() => setFilter(f)}
               className={`rounded-xl px-5 py-2 text-sm font-medium transition
-                ${filter === f ? 'bg-gray-800 text-white shadow ring-1 ring-white/10' : 'bg-gray-900/60 text-gray-300 hover:bg-gray-800'}`}
+                ${filter === f ? 'bg-[var(--card)] text-[var(--text)] shadow ring-1 ring-white/10' : 'bg-[var(--card)]/60 text-[color:var(--muted)] hover:bg-[var(--card)]'}`}
               aria-pressed={filter === f}
             >
               {t(`projects.filters.${f}`)}
@@ -95,7 +95,7 @@ export default function MyProjectsCarousel({
           const href = `/${lang}/${routeProjects}/${p.slug[lang as Lang]}`;
           return (
             <SwiperSlide key={p.slug.en}>
-              <article className="bg-gray-800 rounded-xl overflow-hidden shadow ring-1 ring-white/5 h-full flex flex-col">
+              <article className="bg-[var(--card)] rounded-xl overflow-hidden shadow ring-1 ring-white/5 h-full flex flex-col">
                 <Link to={href} className="block">
                   <img
                     src={p.cover}
@@ -110,10 +110,10 @@ export default function MyProjectsCarousel({
                       {p.title[lang as Lang]}
                     </Link>
                   </h3>
-                  <p className="text-gray-300 text-sm line-clamp-3">{p.summary[lang as Lang]}</p>
+                  <p className="text-[color:var(--muted)] text-sm line-clamp-3">{p.summary[lang as Lang]}</p>
                   <div className="mt-auto flex flex-wrap gap-2 pt-2">
                     {p.tags.slice(0,4).map(tag => (
-                      <span key={`${p.slug.en}-${tag}`} className="text-xs bg-gray-700 px-2 py-1 rounded-md">
+                      <span key={`${p.slug.en}-${tag}`} className="text-xs bg-[var(--card)] px-2 py-1 rounded-md">
                         {tag}
                       </span>
                     ))}

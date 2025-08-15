@@ -11,7 +11,7 @@ export default function PublicationsSection() {
   return (
     <section id="publications" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <header className="mb-8 text-center">
-        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[var(--text)]">
           {t("Publications", "Publications")}
           <span className="ml-2 text-blue-400 text-2xl align-top">
             {publications.length}

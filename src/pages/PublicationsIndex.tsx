@@ -15,7 +15,7 @@ export default function PublicationsIndex() {
     <div className="min-h-screen w-full pt-6 px-4">
       <Breadcrumbs />
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-white">
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-[var(--text)]">
           {lang === "es" ? "Publicaciones" : "Publications"}
         </h1>
 
