@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../components/Breadcrumbs';
+import ContactSection from '../components/ContactSection';
 
 export default function Contact() {
 
@@ -11,6 +12,7 @@ export default function Contact() {
             <h1 className="text-5xl font-bold">{t('Contact')}</h1>
         </div>
         <Breadcrumbs />
+        <ContactSection />
     </div>
   );
 }

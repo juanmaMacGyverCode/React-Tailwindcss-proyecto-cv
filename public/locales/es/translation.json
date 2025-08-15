@@ -98,6 +98,10 @@
     "external": "Enlace externo",
     "analyticsNotice": "Este sitio usa Google Analytics para recopilar datos de uso anónimos.",
     "allRightsReserved": "Todos los derechos reservados."
-  }
-
+  },
+  "Hello, Im": "Hola, me llamo",
+  "Full Stack Developer & Data Science Enthusiast": "Desarrollador Full Stack y Entusiasta de la Ciencia de Datos",
+  "Transforming ideas into applications, powered by data and artificial intelligence": "Transformando ideas en aplicaciones, impulsadas por datos e inteligencia artificial",
+  "Get in Touch": "Contactar",
+  "View My Work": "Ver Mi Trabajo"
 }

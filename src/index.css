@@ -106,7 +106,6 @@ select:-webkit-autofill {
 
 /* Color por defecto de <a> si no aplicas .theme-link */
 a { color: #2563eb; }
-html.dark a { color: #60a5fa; }
 a:hover { text-decoration: underline; }
 
 hr { border-color: var(--border); }

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Breadcrumbs from '../components/Breadcrumbs';
+import AboutMeSection from '../components/AboutMeSection';
 
 export default function About() {
 
@@ -11,6 +12,7 @@ export default function About() {
           <h1 className="text-5xl font-bold">{t('about me')}</h1>
       </div>
       <Breadcrumbs />
+      <AboutMeSection />
     </div>
   );
 }

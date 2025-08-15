@@ -19,16 +19,13 @@ export default function Home() {
 
   const { t } = useTranslation();
 
-  return (
+  /*return (
     <div className="w-full">
         <Background image={backgroundHome} className="min-h-screen flex flex-col items-center justify-center text-[var(--text)] space-y-4">
           <h1 className="text-5xl font-bold">{t('Juan López')}</h1>
           <h2 className="text-4xl font-bold">{t('Full stack developer & Data Science Enthusiast')}</h2>
         </Background>
         <Breadcrumbs />
-        <div className="min-h-screen flex items-center justify-center bg-[var(--card)] text-[var(--text)]">
-            <h2 className="text-5xl font-bold">{t('Home')}</h2>
-        </div>
         <ProfileSection />
         <AboutMeSection />
         <MyProfessionalResume />
@@ -44,9 +41,30 @@ export default function Home() {
         <CertificationsSection />
         <EducationSection />
         <SkillsSection />
-
-        {/* Formulario de contacto */}
         <ContactSection />
+    </div>
+  );*/
+
+  return (
+    <div className="w-full">
+        <Background image={backgroundHome} className="min-h-screen flex flex-col items-stretch justify-center text-[var(--text)] space-y-4">
+          <ProfileSection />
+        </Background>
+        <Breadcrumbs />
+        <AboutMeSection />
+        <MyProfessionalResume />
+        <ExperienceSection />
+        <MyProjectsSection />
+        <MyProjectsCarousel
+          title={t('projects.title')}
+          initialFilter="all"      // o "dev" | "ds"
+          slidesPerView={1.1}
+          autoplayMs={4500}
+        />
+        <PublicationsSection />
+        <CertificationsSection />
+        <EducationSection />
+        <SkillsSection />
     </div>
   );
 }
