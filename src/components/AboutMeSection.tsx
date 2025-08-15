@@ -47,13 +47,16 @@ export default function AboutMeSection() {
                             {t("My Journey")}
                         </h3>
                         <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
-                          {t("I am a passionate Software Development Engineer with over 4 years of experience and a growing expertise in Data Science & Machine Learning. My journey in tech began with curiosity about how software could solve complex problems, leading me to pursue a career where I've developed enterprise applications that deliver real business value.")}
+                          {t("I am a Computer Engineering student, Software Developer, and Artificial Intelligence enthusiast, with a solid foundation in web development, object-oriented programming, and process automation. Over more than 4 years of professional experience, I have worked on the creation and optimization of enterprise applications, Prestashop and WordPress websites, and custom projects integrating APIs, databases, and scalable solutions.")}
                         </p>
                         <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
-                          {t("Currently, I'm expanding my horizons by pursuing an MS in Computer Science with a specialization in Data Science & Machine Learning. I'm combining my engineering background with cutting-edge data science techniques to build intelligent and data-driven solutions.")}
+                          {t("My journey began with a genuine curiosity to understand how technology could solve complex problems and improve people’s lives. This drive has led me to delve into areas such as Data Science, Machine Learning, and the development of consultative applications with LLMs using tools like LangChain and the OpenAI API. I am currently expanding my horizons as a Computer Engineering student, combining practical experience with academic knowledge in AI, algorithms, and advanced data structures.")}
                         </p>
                         <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
-                          {t("Beyond work, I love problem solving, participating in coding challenges and contributing to AI projects.")}
+                          {t("Beyond the technical side, I am passionate about continuous learning, problem-solving, and the creative application of science and technology. I enjoy exploring fields such as astrophysics, philosophy, and essay writing, always seeking to unite logical thinking with creative vision. In my free time, I take part in coding challenges, develop personal projects, and experiment with AI, while also pursuing my other passions such as theater and language learning.")}
+                        </p>
+                        <p className="mt-4 text-[color:var(--muted)] leading-relaxed">
+                          {t("My goal is to build intelligent, human, and sustainable solutions, and to leave a lasting mark both in the technological and personal spheres, combining technical rigor with an inspiring and empathetic vision.")}
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
