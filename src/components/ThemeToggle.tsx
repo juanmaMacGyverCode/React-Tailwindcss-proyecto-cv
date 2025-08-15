@@ -9,7 +9,7 @@ export default function ThemeToggle() {
     <button
       onClick={cycle}
       aria-label="Cambiar tema"
-      className="rounded-md px-3 py-2 text-sm bg-[var(--card)] text-gray-900 dark:bg-[var(--card)] dark:text-gray-900 dark:text-[var(--text)]"
+      className="rounded-md px-3 py-2 text-sm text-gray-900 dark:text-gray-900 dark:text-[var(--text)]"
       title={`Tema: ${theme}`}
     >
       {label}

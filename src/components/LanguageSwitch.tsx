@@ -71,7 +71,7 @@ export default function LanguageSelect() {
 
   return (
     <Menu as="div" className="relative inline-block text-left">
-      <MenuButton className="inline-flex items-center bg-[var(--card)] text-gray-900 dark:bg-[var(--card)] dark:text-[var(--text)] px-2 py-1 focus:outline-none focus:ring focus:ring-indigo-500">
+      <MenuButton className="inline-flex items-center text-gray-900 dark:text-[var(--text)] px-2 py-1 focus:outline-none focus:ring focus:ring-indigo-500">
         <img src={currentLang.flag} alt={currentLang.label} className="w-5 h-3 mr-2 object-cover" />
         <span className="text-[var(--text)] text-sm">{currentLang.label}</span>
       </MenuButton>
@@ -79,11 +79,11 @@ export default function LanguageSelect() {
       <MenuItems className="absolute right-0 mt-1 w-36 origin-top-right rounded-md bg-[var(--card)] text-gray-900 dark:text-[var(--text)] shadow-lg ring-1 ring-black/10 dark:ring-white/10 focus:outline-none z-50">
         {languages.map((lang) => (
           <MenuItem key={lang.code}>
-            {({ active }) => (
+            {({ focus }) => (
               <button
                 onClick={() => changeLanguage(lang.code)}
                 className={`flex items-center w-full px-3 py-2 text-sm text-left ${
-                  active ? 'bg-[var(--card)]' : ''
+                  focus ? 'bg-[var(--card)]' : ''
                 }`}
               >
                 <img src={lang.flag} alt={lang.label} className="w-5 h-3 mr-2 object-cover" />
