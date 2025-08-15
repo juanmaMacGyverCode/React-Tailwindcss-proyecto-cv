@@ -9,6 +9,10 @@
   --card:    #f8fafc;          /* superficies (slate-50) */
   --elev:    #eef2f7;          /* paneles ligeros */
   --border:  rgba(15, 23, 42, 0.10); /* borde suave oscuro */
+  --brand-primary:  #00B8D9;   /* cian nova (más suave para claro) */
+  --brand-secondary:#E91E63;   /* magenta */
+  --brand-accent:   #7C3AED;   /* violeta opcional */
+  --logo-text:      var(--text);
 }
 
 /* Modo oscuro */
@@ -20,6 +24,10 @@ html.dark {
   --card:    #111827;          /* superficies (gray-900) */
   --elev:    #0f172a;          /* paneles oscuros */
   --border:  rgba(255, 255, 255, 0.10); /* borde suave claro */
+  --brand-primary:  #00E5FF;   /* cian brillante sobre oscuro */
+  --brand-secondary:#FF3366;   /* magenta intenso */
+  --brand-accent:   #8B5CF6;   /* violeta */
+  --logo-text:      var(--text);
 }
 
 /* Helpers opcionales (no obligatorios) */
@@ -109,3 +117,17 @@ input, textarea, select {
   color: var(--text);
   border-color: var(--border);
 }
+
+/* ===== Helpers de marca ===== */
+.brand-text      { color: var(--brand-primary); }
+.brand-bg        { background: var(--brand-primary); }
+.brand-ring      { --tw-ring-color: var(--brand-primary); }
+
+.brand-secondary { color: var(--brand-secondary); }
+.brand-accent    { color: var(--brand-accent); }
+
+/* Logo helpers: para pintar el SVG con CSS variables */
+.logo-mark-fill  { fill: var(--brand-primary); }
+.logo-mark-stroke{ stroke: var(--brand-secondary); }
+.logo-text-fill  { fill: var(--logo-text); }
+

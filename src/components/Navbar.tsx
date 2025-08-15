@@ -7,6 +7,7 @@ import LanguageSwitcher from './LanguageSwitch';
 import { localizedRoutes } from '../routes';
 import { Link, NavLink } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
+import { BrandLogo } from './BrandLogo';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -52,11 +53,7 @@ export default function Navbar() {
           {/* Logo y enlaces */}
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <Link to={`/${lang}`} className="flex shrink-0 items-center">
-              <img
-                alt={t('CV Project')}
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              />
+              <BrandLogo className="h-8 w-auto" />
             </Link>
 
             <div className="hidden sm:ml-6 sm:block">
